@@ -1,0 +1,35 @@
+*.docx
+*.doc
+
+
+# Mac-spezifische Dateien
+.DS_Store
+
+# Entwicklungsumgebung
+.vscode/
+.idea/
+.node_modules/
+package-lock.json
+yarn.lock
+
+# Build- und Cache-Dateien
+build/
+dist/
+node_modules/
+*.log
+*.tmp
+
+# Systemdateien
+.AppleDouble
+.LSOverride
+.Trash/
+ehthumbs.db
+Thumbs.db
+
+# Temporäre Dateien
+._*
+.Spotlight-V100
+.Trash/
+ehthumbs.db
+Thumbs.db
+
