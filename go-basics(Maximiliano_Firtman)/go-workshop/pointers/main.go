@@ -8,6 +8,8 @@ func birthday(age *int){
 
 func main() {
 
+	defer fmt.Println("Good")
+	defer fmt.Println("Bye")
 	age := 22
 	birthday(&age)
 	
