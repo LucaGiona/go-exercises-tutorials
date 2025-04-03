@@ -1,14 +1,26 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
-func printMessage(text string) {
-	for i := 0; i < 10; i++ {
+func printMessage(text string, channel chan string) {
+	for i := 0; i < 5; i++ {
 		fmt.Println(text)
+		time.Sleep(800 * time.Millisecond)
+
 	}
+	channel <- "Done!"
 }
 
-func main() {
-	printMessage("Go is great")
+func main() { //main goroutine
+	channel := make(chan string)
+	
+	go printMessage("Frontend Master rocks", channel)
+	response := <- channel
+
+	fmt.Println(response)
+	
 
 }
