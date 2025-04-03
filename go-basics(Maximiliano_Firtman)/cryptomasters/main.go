@@ -1,10 +1,36 @@
 package main
 
-import "frontendmasters.com/go/crypto/api"
+import (
+	"fmt"
+	"sync"
 
-func main(){
+	"frontendmasters.com/go/crypto/api"
+)
 
-	rate, err := api.GetRate("BTC")
+// main goroutine
+func main() {
 
-	print(rate,err)
+	currencies := []string{"BTC", "ETH", "BCH"}
+
+	var wg sync.WaitGroup
+
+	for _, currency := range currencies {
+		wg.Add(1)
+		go func(currencyCode string) {
+			getCurrencyData(currencyCode)
+			wg.Done()
+		}(currency)
+
+	}
+	wg.Wait()
+
+}
+
+// new goroutine
+func getCurrencyData(currency string) {
+
+	rate, err := api.GetRate(currency)
+	if err == nil {
+		fmt.Printf("The rate for %v is %.2f \n", rate.Currency, rate.Price)
+	}
 }

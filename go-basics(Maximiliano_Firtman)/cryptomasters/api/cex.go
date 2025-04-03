@@ -19,15 +19,14 @@ func GetRate(currency string) (*datatypes.Rate, error) {
 	if err != nil {
 		return nil, err
 	}
-
+	var response CEXResponse
 	if res.StatusCode == http.StatusOK {
 		bodyBites, err := io.ReadAll(res.Body)
 		if err != nil {
 			return nil, err
 		}
 
-		var cryptoRate datatypes.Rate
-		err = json.Unmarshal(bodyBites, &cryptoRate)
+		err = json.Unmarshal(bodyBites, &response)
 		if err != nil {
 			return nil, err
 		}
@@ -35,6 +34,6 @@ func GetRate(currency string) (*datatypes.Rate, error) {
 	} else {
 		return nil, fmt.Errorf("status code received: %v", res.StatusCode)
 	}
-	rate := datatypes.Rate{Currency: currency, Price: 20}
+	rate := datatypes.Rate{Currency: currency, Price: float64(response.Bid)}
 	return &rate, nil
 }
