@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"os"
 
-
-	fileutils "lucagion.guru/go/files/fileFolder"
+	"lucagiona.guru/go/files/data"
+	fileutils "lucagiona.guru/go/files/fileFolder"
 )
 
 func main(){
@@ -20,4 +20,9 @@ func main(){
 	} else {
 		fmt.Printf("ERROR Panic!, %v", err)
 	}
+
+	fmt.Println("Starte test...")
+
+	data.Test()
+	data.LocationTest()
 }

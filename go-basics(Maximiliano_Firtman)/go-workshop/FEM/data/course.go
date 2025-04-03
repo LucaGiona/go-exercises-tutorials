@@ -14,6 +14,9 @@ type Course struct {
 
 }
 
+func (c Course) SignUp()bool {
+	return true
+}
 
 func (c Course) String() string  {
 

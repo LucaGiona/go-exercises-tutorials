@@ -1,3 +1,3 @@
-module lucagion.guru/go/files
+module lucagiona.guru/go/files
 
 go 1.24.1
